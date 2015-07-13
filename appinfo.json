@@ -31,8 +31,8 @@
                 "type": "font"
             },
             {
-                "file": "rain_bw.png",
-                "name": "IMAGE_RAIN_BW",
+                "file": "images/rain_bw.png",
+                "name": "IMAGES_RAIN_BW_PNG",
                 "type": "png"
             }
         ]
