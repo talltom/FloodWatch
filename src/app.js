@@ -1,17 +1,23 @@
 /**
- * Welcome to Pebble.js!
+ * FloodWatch 
  *
- * This is where you write your app.
+ * Smartwatch Flood Alerts @ PetaJakarta.org
+ * 
+ * Tomas Holderness 2015
+ *
+ * version 0.1
  */
 
+// Library imports
 var UI = require('ui');
 var Vector2 = require('vector2');
 
 var main = new UI.Card({
-  title: 'Pebble.js',
-  icon: 'images/menu_icon.png',
-  subtitle: 'Hello World!',
-  body: 'Press any button.'
+  title: 'FloodWatch',
+  icon: '',
+  subtitle: 'Hati Hati!',
+  body: 'Jakarta 12 laporan banjir jam terakhir',
+  scrollable: true
 });
 
 main.show();
