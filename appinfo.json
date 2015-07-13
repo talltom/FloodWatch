@@ -29,6 +29,11 @@
                 "file": "fonts/UbuntuMono-Regular.ttf",
                 "name": "MONO_FONT_14",
                 "type": "font"
+            },
+            {
+                "file": "resources/rain_bw.png",
+                "name": "IMAGE_RAIN_BW",
+                "type": "png"  
             }
         ]
     },
