@@ -31,9 +31,9 @@
                 "type": "font"
             },
             {
-                "file": "resources/rain_bw.png",
+                "file": "rain_bw.png",
                 "name": "IMAGE_RAIN_BW",
-                "type": "png"  
+                "type": "png"
             }
         ]
     },
