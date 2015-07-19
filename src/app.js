@@ -14,12 +14,12 @@ var Vector2 = require('vector2');
 
 var main = new UI.Card({
   title: 'FloodWatch',
-  icon: 'IMAGE_RAIN_BW',
   subtitle: 'Hati Hati!',
-  body: 'Jakarta 12 laporan banjir jam terakhir',
-  scrollable: true,
-  banner: 'IMAGE_RAIN_BW'
+  body: '', //Jakarta 12 laporan banjir jam terakhir
+  scrollable: false
 });
+
+main.icon('IMAGE_RAIN');
 
 main.show();
 
