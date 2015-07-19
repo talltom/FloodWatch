@@ -1,11 +1,9 @@
 #To Do
 #####0.1
-- Single Card showing total number of current alerts across Jakarta
-- Loading window
+- ~~Loading window~~
 - Menu item w/ icon
-- Loading window w/ animation
-- Unit tests deployed on Travis-CI
-- Clickable listing of reports
+- ~~Loading window~~ w/ animation
+- ~~Clickable listing of reports~~
 
 #####0.2
 - Scheduled updates
