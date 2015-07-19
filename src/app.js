@@ -18,9 +18,10 @@ var parseReports = function(data){
   var reports = [];
   // Loop through reports
   for (var i = 0; i < data.features.length; i++){    
+    // Format the time string
     var time = data.features[i].properties.created_at.split(' ')[1];
     time = time.split(':')[0]+':'+time.split(':')[1];
-    
+    // Add reports to the menu
     reports.push({
       title:time,
       subtitle:data.features[i].properties.text
@@ -77,28 +78,51 @@ splashWindow.add(loadingText);
 ajax(
   {
     //url:'http://petajakarta.org/banjir/data/api/v1/reports/confirmed',
-    url: 'https://gist.githubusercontent.com/talltom/e477e673f63a8ecb78ea/raw/c4a98a4cf2bf290a7728232bf393a5121e570802/sample_cognicity_flood_report_v1.json',
+    url: 'https://gist.githubusercontent.com/talltom/e477e673f63a8ecb78ea/raw/a589765bee042f2d04eb8c0f62fd1b9056667947/sample_cognicity_flood_report_v1.json',
     type:'json'
   },
   function(data) {
+    // Display "no reports" card
     if (data.features === null) {
       var noreportsCard = new UI.Card({
         title:'FloodWatch',
         subtitle:'0 reports',
         body:'\nNo reports of flooding from PetaJakarta.org in past hour.'
       });
+      
+    // Update UI
     noreportsCard.show();
     splashWindow.hide();
     }
     else {  
+      // Organise reports
       var reports = parseReports(data);
-      // Construct reports meune
+      
+      // Construct reports menu
       var reportsMenu = new UI.Menu({
         sections: [{
           title: 'Current Reports',
           items: reports
         }]
       });
+      
+      // Add action for menu select
+      reportsMenu.on('select', function(e) {
+        console.log('select fired');
+        // Get report
+        var report = reports[e.itemIndex];
+        console.log(report);
+        // Create report card
+        var reportCard = new UI.Card({
+          title: "Flood Report",
+          subtitle: report.title + ' Jakarta',
+          body: report.subtitle,
+          scrollable: false
+        });
+        reportCard.show();
+      });
+      
+      // Update UI
       reportsMenu.show();
       splashWindow.hide();
     }
