@@ -10,6 +10,8 @@
 - Clickable listing of reports
 - Scheduled updates
 - Animation/graphics/support for colour
+- Shake to update
+- Vibrate on re-load
 
 #####0.3
 - Timeline based app
