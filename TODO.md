@@ -5,13 +5,14 @@
 - Menu item w/ icon
 - Loading window w/ animation
 - Unit tests deployed on Travis-CI
+- Clickable listing of reports
 
 #####0.2
-- Clickable listing of reports
 - Scheduled updates
 - Animation/graphics/support for colour
 - Shake to update
 - Vibrate on re-load
+- Data API v2 support
 
 #####0.3
 - Timeline based app
