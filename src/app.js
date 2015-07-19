@@ -65,13 +65,15 @@ splashWindow.add(loadingText);
 // Make request to PetaJakarta.org
 ajax(
   {
-    url:'http://petajakarta.org/banjir/data/api/v1/reports/confirmeds',
+    url:'http://petajakarta.org/banjir/data/api/v1/reports/confirmed',
     type:'json'
   },
   function(data) {
     if (data.features === null) {
       var noreportsCard = new UI.Card({
-        title:'No reports now'
+        title:'FloodWatch',
+        subtitle:'0 reports',
+        body:'\nNo reports of flooding at PetaJakarta.org in past hour.'
       });
     noreportsCard.show();
     splashWindow.hide();
@@ -85,7 +87,7 @@ ajax(
     
     var errorCard = new UI.Card({
     title: 'Download Error',
-    subtitle: '@ PetaJakarta.org:',
+    subtitle: '> PetaJakarta.org',
     body: error,
     style: 'small',
     scrollable: true
