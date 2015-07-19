@@ -13,9 +13,20 @@ var UI = require('ui');
 var Vector2 = require('vector2');
 var ajax = require('ajax');
 
-// Load reports into menu
-var loadReports = function(data){
-  // No reports
+// Load reports
+var parseReports = function(data){
+  var reports = [];
+  // Loop through reports
+  for (var i = 0; i < data.features.length; i++){    
+    var time = data.features[i].properties.created_at.split(' ')[1];
+    time = time.split(':')[0]+':'+time.split(':')[1];
+    
+    reports.push({
+      title:time,
+      subtitle:data.features[i].properties.text
+    });
+  }
+  return reports;
 };
 
 // Splash Window
@@ -65,7 +76,8 @@ splashWindow.add(loadingText);
 // Make request to PetaJakarta.org
 ajax(
   {
-    url:'http://petajakarta.org/banjir/data/api/v1/reports/confirmed',
+    //url:'http://petajakarta.org/banjir/data/api/v1/reports/confirmed',
+    url: 'https://gist.githubusercontent.com/talltom/e477e673f63a8ecb78ea/raw/c4a98a4cf2bf290a7728232bf393a5121e570802/sample_cognicity_flood_report_v1.json',
     type:'json'
   },
   function(data) {
@@ -73,13 +85,22 @@ ajax(
       var noreportsCard = new UI.Card({
         title:'FloodWatch',
         subtitle:'0 reports',
-        body:'\nNo reports of flooding at PetaJakarta.org in past hour.'
+        body:'\nNo reports of flooding from PetaJakarta.org in past hour.'
       });
     noreportsCard.show();
     splashWindow.hide();
     }
     else {  
-      loadReports(data);
+      var reports = parseReports(data);
+      // Construct reports meune
+      var reportsMenu = new UI.Menu({
+        sections: [{
+          title: 'Current Reports',
+          items: reports
+        }]
+      });
+      reportsMenu.show();
+      splashWindow.hide();
     }
   },
   function(error) {
